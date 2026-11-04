@@ -1,0 +1,5 @@
+target
+.m2-cache
+.env
+.env.*
+maven-settings.xml

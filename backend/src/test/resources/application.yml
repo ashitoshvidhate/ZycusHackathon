@@ -1,0 +1,23 @@
+spring.datasource.url: jdbc:h2:mem:stockpulse_test;DB_CLOSE_DELAY=-1;MODE=MySQL
+spring.datasource.username: sa
+spring.datasource.password:
+spring.jpa.hibernate.ddl-auto: validate
+spring.jpa.open-in-view: false
+spring.flyway.enabled: true
+spring.kafka.listener.auto-startup: false
+spring.security.oauth2.resourceserver.jwt.issuer-uri: ${OAUTH_ISSUER_URI:http://localhost:9000/realms/stockpulse}
+stockpulse.security.jwk-set-uri: ${OAUTH_JWK_SET_URI:http://localhost:9000/realms/stockpulse/protocol/openid-connect/certs}
+stockpulse.security.audience: ${OAUTH_AUDIENCE:stockpulse-api}
+resilience4j.circuitbreaker.instances.llmGateway.sliding-window-type: COUNT_BASED
+resilience4j.circuitbreaker.instances.llmGateway.sliding-window-size: 10
+resilience4j.circuitbreaker.instances.llmGateway.minimum-number-of-calls: 5
+resilience4j.circuitbreaker.instances.llmGateway.failure-rate-threshold: 50
+resilience4j.circuitbreaker.instances.llmGateway.wait-duration-in-open-state: 30s
+resilience4j.circuitbreaker.instances.llmGateway.permitted-number-of-calls-in-half-open-state: 3
+resilience4j.retry.instances.llmGateway.max-attempts: 3
+resilience4j.retry.instances.llmGateway.wait-duration: 250ms
+resilience4j.retry.instances.llmGateway.ignore-exceptions[0]: io.github.resilience4j.ratelimiter.RequestNotPermitted
+resilience4j.retry.instances.llmGateway.ignore-exceptions[1]: io.github.resilience4j.circuitbreaker.CallNotPermittedException
+resilience4j.ratelimiter.instances.llmGateway.limit-for-period: 10
+resilience4j.ratelimiter.instances.llmGateway.limit-refresh-period: 1m
+resilience4j.ratelimiter.instances.llmGateway.timeout-duration: 0
