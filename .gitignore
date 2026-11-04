@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+target/
+node_modules/
+dist/
+.idea/
+.vscode/
+*.log
+application-local.*
+.m2-cache/
+maven-settings.xml
+
+*.tsbuildinfo
